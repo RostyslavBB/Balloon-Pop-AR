@@ -29,6 +29,7 @@
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
     debugLogging: false
+    interactionComponent: false
     speed: false
     topBoundaryY: false
   ScriptTypesHidden:
@@ -43,6 +44,7 @@
     - speed: 0.300000
       topBoundaryY: 1.100000
       debugLogging: false
+      interactionComponent: !<reference.InteractionComponent> 00000000-0000-0000-0000-000000000000
   ScriptTypes:
     -
       {}
@@ -50,3 +52,4 @@
     - // @input float speed = 0.3
     - // @input float topBoundaryY = 1.1
     - // @input bool debugLogging
+    - // @input Component.InteractionComponent interactionComponent

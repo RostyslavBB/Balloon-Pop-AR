@@ -1,3 +1,5 @@
+import {GameManager} from "./GameManager";
+
 @component
 export class Balloon extends BaseScriptComponent {
     @input 
@@ -9,6 +11,9 @@ export class Balloon extends BaseScriptComponent {
     @input
     debugLogging: boolean = false;
 
+    @input
+    interactionComponent: InteractionComponent | null = null;
+
     private screenTransform!: ScreenTransform;
     private popped: boolean = false;
 
@@ -17,6 +22,8 @@ export class Balloon extends BaseScriptComponent {
         this.screenTransform = this.getSceneObject().getComponent("Component.ScreenTransform");
 
         this.createEvent("UpdateEvent").bind(() => this.onUpdate());
+
+        this.interactionComponent?.onTap.add(() => this.pop());
     }
 
     onUpdate()
@@ -44,7 +51,24 @@ export class Balloon extends BaseScriptComponent {
 
     missedBallon()
     {
+        this.popped = true;
         this.getSceneObject().enabled = false;
-        print("Missed Ballon");
+        
+        GameManager.getInstance()?.loseLife();
+    }
+
+    pop()
+    {
+        if(this.popped) return;
+        
+        this.popped = true;
+        this.getSceneObject().enabled = false;
+        
+        GameManager.getInstance()?.addScore(10);
+    }
+
+    resetBalloon()
+    {
+        this.popped = false;
     }
 }

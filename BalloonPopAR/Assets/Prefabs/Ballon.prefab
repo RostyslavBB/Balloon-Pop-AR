@@ -1,0 +1,99 @@
+- !<ObjectPrefab/3001e0ea-84f6-425d-abae-a43cfd2f131c>
+  PackagePath: ""
+  objects:
+    - !<own> a0640e06-fa3f-4700-bf7d-bb75b259535a
+  LazyLoading: false
+  RetainAssets: true
+  PreviewEnvironment: !<reference> 00000000-0000-0000-0000-000000000000
+- !<Image/1ac4f80c-bbb7-4620-babd-2e47ce14b46e>
+  PrefabRemaps:
+    []
+  Name: Image
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 017d22ef-d2d2-41da-a00c-e7de7d53cdcb
+  FlipX: false
+  FlipY: false
+  RotationAngle: 0
+  Pivot: {x: 0.000000, y: 0.000000}
+  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<SceneObject/a0640e06-fa3f-4700-bf7d-bb75b259535a>
+  PrefabRemaps:
+    - 1ac4f80c-bbb7-4620-babd-2e47ce14b46e: 1ac4f80c-bbb7-4620-4542-d1b831eb4b91
+    - a0640e06-fa3f-4700-bf7d-bb75b259535a: a0640e06-fa3f-4700-4082-448a4da6aca5
+    - f027af32-7c99-420d-8cea-10f16578902b: f027af32-7c99-420d-7315-ef0e9a876fd4
+    - f30e72e2-b6ed-4458-9684-e94bc66c27a7: f30e72e2-b6ed-4458-697b-16b43993d858
+  Name: Ballon
+  Enabled: true
+  Layers: 1048576
+  LocalTransform: !<TransformEntity>
+    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    HasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> f027af32-7c99-420d-8cea-10f16578902b
+    - !<own> 1ac4f80c-bbb7-4620-babd-2e47ce14b46e
+    - !<own> f30e72e2-b6ed-4458-9684-e94bc66c27a7
+- !<ScreenTransform/f027af32-7c99-420d-8cea-10f16578902b>
+  PrefabRemaps:
+    []
+  Name: Screen Transform
+  Enabled: true
+  IsAdvanced: true
+  Constraints:
+    pinToLeft: false
+    pinToTop: false
+    pinToRight: false
+    pinToBottom: false
+    fixedWidth: false
+    fixedHeight: false
+    deactivatedFixedSprite: false
+    deactivatedFixedPivot: false
+  Pivot: {x: 0.000000, y: 0.000000}
+  Transform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  RawMode: true
+  ForceBasic: false
+  EnableDebugRender: false
+  Anchor:
+    left: -0.138889
+    bottom: -0.078125
+    right: 0.138889
+    top: 0.078125
+  Offset:
+    left: -2.596456
+    bottom: -872.375488
+    right: -2.596456
+    top: -872.375488
+- !<ScriptComponent/f30e72e2-b6ed-4458-9684-e94bc66c27a7>
+  PrefabRemaps:
+    []
+  Name: Balloon
+  Enabled: true
+  ScriptAsset: !<reference> 1fd4e3f2-7f05-4748-b73b-cbb9c35042f9
+  ScriptInputsDefault:
+    speed: true
+    debugLogging: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      speed: 0.300000
+      topBoundaryY: 2.300000
+      debugLogging: false
+  ScriptTypes:
+    "":
+      {}

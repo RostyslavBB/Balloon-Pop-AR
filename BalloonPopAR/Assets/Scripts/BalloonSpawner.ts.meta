@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/716804ff-2048-4a51-bf03-156ea78ff09f>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 5c5e64a9-6b1a-428f-81cf-5ac2465eb15a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 5c5e64a9-6b1a-428f-81cf-5ac2465eb15a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 13fc917e-4a2a-41f4-b192-9056994bd2ed
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/13fc917e-4a2a-41f4-b192-9056994bd2ed>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 9211e196-5a7c-4aa4-897b-5830ccd806ea
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    balloonPrefab: false
+    poolSize: false
+    spawnIntervalSeconds: false
+    spawnRoot: false
+    spawnXRange: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - balloonPrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      spawnRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      poolSize: !<float> 10.000000
+      spawnIntervalSeconds: !<float> 1.000000
+      spawnXRange: !<float> 1.000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Asset.ObjectPrefab balloonPrefab
+    - // @input SceneObject spawnRoot
+    - // @input float poolSize = 10
+    - // @input float spawnIntervalSeconds = 1
+    - // @input float spawnXRange = 1
