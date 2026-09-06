@@ -28,6 +28,7 @@
   PrefabRemaps:
     - 1ac4f80c-bbb7-4620-babd-2e47ce14b46e: 1ac4f80c-bbb7-4620-4542-d1b831eb4b91
     - a0640e06-fa3f-4700-bf7d-bb75b259535a: a0640e06-fa3f-4700-4082-448a4da6aca5
+    - eaa4361f-4511-415f-8858-8b823c43bb9d: 9cc4f5d7-1f1b-4a2b-87ea-1071d8f37258
     - f027af32-7c99-420d-8cea-10f16578902b: f027af32-7c99-420d-7315-ef0e9a876fd4
     - f30e72e2-b6ed-4458-9684-e94bc66c27a7: f30e72e2-b6ed-4458-697b-16b43993d858
   Name: Ballon
@@ -44,6 +45,17 @@
     - !<own> f027af32-7c99-420d-8cea-10f16578902b
     - !<own> 1ac4f80c-bbb7-4620-babd-2e47ce14b46e
     - !<own> f30e72e2-b6ed-4458-9684-e94bc66c27a7
+    - !<own> eaa4361f-4511-415f-8858-8b823c43bb9d
+- !<InteractionComponent/eaa4361f-4511-415f-8858-8b823c43bb9d>
+  PrefabRemaps:
+    []
+  Name: Interaction
+  Enabled: true
+  Camera: !<reference> 00000000-0000-0000-0000-000000000000
+  MinimumTouchSize: 0.000000
+  DepthFilter: true
+  MeshVisuals:
+    []
 - !<ScreenTransform/f027af32-7c99-420d-8cea-10f16578902b>
   PrefabRemaps:
     []
@@ -94,6 +106,7 @@
       speed: 0.300000
       topBoundaryY: 2.300000
       debugLogging: false
+      interactionComponent: !<reference.InteractionComponent> eaa4361f-4511-415f-8858-8b823c43bb9d
   ScriptTypes:
     "":
       {}

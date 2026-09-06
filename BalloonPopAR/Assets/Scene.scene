@@ -173,23 +173,6 @@
   FalloffType: None
   FalloffRange: .inf
   ShadowType: None
-- !<SceneObject/02a56de0-1a6f-4df5-98b1-524bf62b6fbf>
-  PrefabRemaps:
-    []
-  Name: Ballon
-  Enabled: true
-  Layers: 1048576
-  LocalTransform: !<TransformEntity>
-    Position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    HasSegmentScaleCompensation: false
-  Children:
-    []
-  Components:
-    - !<own> 53b77ef1-2407-4b6a-9d9a-b003941bba72
-    - !<own> 15ece737-f489-406c-8691-8822e7b76021
-    - !<own> f2d9a730-ed26-4469-b0b5-d70cc520b2d5
 - !<Text/03bb8a54-5f35-4f26-bb1b-69e68da3fab9>
   PrefabRemaps:
     []
@@ -288,7 +271,7 @@
   Children:
     []
   Components:
-    []
+    - !<own> 0c4a13fa-f736-4e5f-986e-c42f2ab67db1
 - !<Image/0c1e61c1-c64b-42e0-80ec-390229ca4106>
   PrefabRemaps:
     []
@@ -308,6 +291,25 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<ScriptComponent/0c4a13fa-f736-4e5f-986e-c42f2ab67db1>
+  PrefabRemaps:
+    []
+  Name: GameManager
+  Enabled: true
+  ScriptAsset: !<reference> 8049ef1f-8a98-46a9-ae85-053d327c7eb1
+  ScriptInputsDefault:
+    startingLives: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      scoreText: !<reference.Text> d5e143e1-dc70-46c9-9c2b-7ff435bb978f
+      livesText: !<reference.Text> 4ddc3788-cb9c-4bc6-a8ca-af55c5ceedf0
+      gameOverRoot: !<reference.SceneObject> 36cdcc9c-27e6-4dbf-a8ae-c0ba3908fb31
+      startingLives: !<float> 3.000000
+  ScriptTypes:
+    "":
+      {}
 - !<ScreenTransform/0e998c0f-9db2-4bcd-888f-68215454dbaf>
   PrefabRemaps:
     []
@@ -373,25 +375,6 @@
   MaskTexture: !<reference> 00000000-0000-0000-0000-000000000000
   RayTracing: !<reference> 00000000-0000-0000-0000-000000000000
   DevicePropertiesSource: !<reference> 00000000-0000-0000-0000-000000000000
-- !<Image/15ece737-f489-406c-8691-8822e7b76021>
-  PrefabRemaps:
-    []
-  Name: Image
-  Enabled: true
-  RenderOrder: 0
-  StretchMode: Stretch
-  VerticalAlignment: Center
-  HorizontalAlignment: Center
-  MeshShadowMode: None
-  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
-  ShadowDensity: 1.000000
-  Materials:
-    - !<reference> 017d22ef-d2d2-41da-a00c-e7de7d53cdcb
-  FlipX: false
-  FlipY: false
-  RotationAngle: 0
-  Pivot: {x: 0.000000, y: 0.000000}
-  ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
 - !<SceneObject/1f1db0dc-8f51-4861-930a-22886ec797ab>
   PrefabRemaps:
     []
@@ -547,7 +530,7 @@
     []
   Name: Text
   Enabled: true
-  RenderOrder: 0
+  RenderOrder: 1
   StretchMode: Stretch
   VerticalAlignment: Center
   HorizontalAlignment: Center
@@ -626,40 +609,6 @@
     CapitalizationOverride: None
   DepthTest: false
   TwoSided: false
-- !<ScreenTransform/53b77ef1-2407-4b6a-9d9a-b003941bba72>
-  PrefabRemaps:
-    []
-  Name: Screen Transform
-  Enabled: true
-  IsAdvanced: true
-  Constraints:
-    pinToLeft: false
-    pinToTop: false
-    pinToRight: false
-    pinToBottom: false
-    fixedWidth: false
-    fixedHeight: false
-    deactivatedFixedSprite: false
-    deactivatedFixedPivot: false
-  Pivot: {x: 0.000000, y: 0.000000}
-  Transform:
-    position: {x: 0.000000, y: 0.000000, z: 0.000000}
-    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
-    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
-    hasSegmentScaleCompensation: false
-  RawMode: true
-  ForceBasic: false
-  EnableDebugRender: false
-  Anchor:
-    left: -0.138889
-    bottom: -0.078125
-    right: 0.138889
-    top: 0.078125
-  Offset:
-    left: -2.596456
-    bottom: -872.375488
-    right: -2.596456
-    top: -872.375488
 - !<SceneObject/56b7c7bc-8899-4ee3-98b6-9480d53870e6>
   PrefabRemaps:
     []
@@ -675,6 +624,7 @@
     - !<own> 86fee4f5-3ba1-41b6-bfc3-a6c76c2e5a6a
     - !<own> f79379b8-ee38-4572-a2c8-72616fb9e3bf
     - !<own> 5af83149-4348-4b85-aba9-9aa506ba129f
+    - !<own> 950eb2e5-bfee-4f48-98ff-849066c392de
     - !<own> 36cdcc9c-27e6-4dbf-a8ae-c0ba3908fb31
   Components:
     - !<own> 42413c1a-4454-4d53-bee4-4a424a6c0afb
@@ -711,6 +661,28 @@
   Components:
     - !<own> 226c1e58-419a-48ce-918e-2e66cea0a665
     - !<own> 0c1e61c1-c64b-42e0-80ec-390229ca4106
+- !<ScriptComponent/6eba72c2-84c8-4937-8ce8-0bb2c63e544e>
+  PrefabRemaps:
+    []
+  Name: BalloonSpawner
+  Enabled: true
+  ScriptAsset: !<reference> 5c5e64a9-6b1a-428f-81cf-5ac2465eb15a
+  ScriptInputsDefault:
+    poolSize: true
+    spawnIntervalSeconds: true
+    spawnXRange: true
+  ScriptTypesDefault:
+    {}
+  ScriptInputs:
+    "":
+      balloonPrefab: !<reference.ObjectPrefab> 3001e0ea-84f6-425d-abae-a43cfd2f131c
+      spawnRoot: !<reference.SceneObject> 950eb2e5-bfee-4f48-98ff-849066c392de
+      poolSize: !<float> 10.000000
+      spawnIntervalSeconds: !<float> 1.000000
+      spawnXRange: !<float> 1.000000
+  ScriptTypes:
+    "":
+      {}
 - !<SceneObject/86fee4f5-3ba1-41b6-bfc3-a6c76c2e5a6a>
   PrefabRemaps:
     []
@@ -775,7 +747,7 @@
   Children:
     []
   Components:
-    []
+    - !<own> 6eba72c2-84c8-4937-8ce8-0bb2c63e544e
 - !<SceneObject/950eb2e5-bfee-4f48-98ff-849066c392de>
   PrefabRemaps:
     []
@@ -788,7 +760,7 @@
     Scale: {x: 1.000000, y: 1.000000, z: 1.000000}
     HasSegmentScaleCompensation: false
   Children:
-    - !<own> 02a56de0-1a6f-4df5-98b1-524bf62b6fbf
+    []
   Components:
     - !<own> 42540104-4507-4098-bb41-935e050e16df
     - !<own> ad3d14da-f343-44d4-b06d-4bb1f2679979
@@ -817,9 +789,9 @@
   ForceBasic: true
   EnableDebugRender: false
   Anchor:
-    left: -0.997280
+    left: -0.695906
     bottom: 0.793264
-    right: -0.511088
+    right: -0.467067
     top: 1.000000
   Offset:
     left: 0.000000
@@ -899,7 +871,6 @@
     HasSegmentScaleCompensation: false
   Children:
     - !<own> 56b7c7bc-8899-4ee3-98b6-9480d53870e6
-    - !<own> 950eb2e5-bfee-4f48-98ff-849066c392de
   Components:
     - !<own> 125d098e-d9bd-4d22-bd28-d64510b7a565
     - !<own> 4b557393-3736-4f85-bd0f-737f7eaa8dd3
@@ -915,10 +886,10 @@
     []
   Name: Text
   Enabled: true
-  RenderOrder: 0
+  RenderOrder: 1
   StretchMode: Stretch
   VerticalAlignment: Center
-  HorizontalAlignment: Center
+  HorizontalAlignment: Right
   MeshShadowMode: None
   ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
   ShadowDensity: 1.000000
@@ -1031,26 +1002,10 @@
     right: 1.000000
     top: 1.000000
   Offset:
-    left: 0.000000
+    left: -88.301361
     bottom: 0.000000
-    right: 0.000000
+    right: -47.196365
     top: 0.000000
-- !<ScriptComponent/f2d9a730-ed26-4469-b0b5-d70cc520b2d5>
-  PrefabRemaps:
-    []
-  Name: Balloon
-  Enabled: true
-  ScriptAsset: !<reference> 1fd4e3f2-7f05-4748-b73b-cbb9c35042f9
-  ScriptInputsDefault:
-    speed: true
-  ScriptTypesDefault:
-    {}
-  ScriptInputs:
-    "":
-      speed: 0.300000
-  ScriptTypes:
-    "":
-      {}
 - !<SceneObject/f79379b8-ee38-4572-a2c8-72616fb9e3bf>
   PrefabRemaps:
     []

@@ -1,22 +1,31 @@
 @component
-export class GameManager extends BaseScriptComponent 
+export class GameManager extends BaseScriptComponent
 {
     @input
-    scoreText: Text | null = null;
+    @allowUndefined
+    scoreText: Text | undefined;
 
     @input
-    livesText: Text | null = null;
+    @allowUndefined
+    livesText: Text | undefined;
+
+    @input
+    @allowUndefined
+    gameOverRoot: SceneObject | undefined;
+
+    @input
+    startingLives: number = 3;
 
     private score: number = 0;
     private lives: number = 3;
+    private gameIsOver: boolean = false;
 
     private static instance: GameManager | null = null;
 
-    onAwake() 
+    onAwake()
     {
         GameManager.instance = this;
-        this.updateScoreText();
-        this.updateLivesText();
+        this.restart();
     }
 
     static getInstance(): GameManager | null
@@ -24,22 +33,42 @@ export class GameManager extends BaseScriptComponent
         return GameManager.instance;
     }
 
+    isGameOver(): boolean
+    {
+        return this.gameIsOver;
+    }
+
     addScore(points: number)
     {
+        if (this.gameIsOver) return;
+
         this.score += points;
         this.updateScoreText();
     }
 
     loseLife()
     {
-        this.lives--;
+        if (this.gameIsOver) return;
 
+        this.lives = Math.max(0, this.lives - 1);
         this.updateLivesText();
 
-        if(this.lives <= 0)
+        if (this.lives <= 0)
         {
             this.gameOver();
         }
+    }
+
+    restart()
+    {
+        this.score = 0;
+        this.lives = this.startingLives;
+        this.gameIsOver = false;
+
+        if (this.gameOverRoot) this.gameOverRoot.enabled = false;
+
+        this.updateScoreText();
+        this.updateLivesText();
     }
 
     updateScoreText()
@@ -60,6 +89,12 @@ export class GameManager extends BaseScriptComponent
 
     private gameOver()
     {
+        if (this.gameIsOver) return;
+
+        this.gameIsOver = true;
+
+        if (this.gameOverRoot) this.gameOverRoot.enabled = true;
+
         print("Game Over! Final Score: " + this.score);
     }
 }

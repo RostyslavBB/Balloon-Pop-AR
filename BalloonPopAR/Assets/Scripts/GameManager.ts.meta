@@ -28,7 +28,10 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
-    {}
+    gameOverRoot: false
+    livesText: false
+    scoreText: false
+    startingLives: false
   ScriptTypesHidden:
     {}
   ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
@@ -38,10 +41,15 @@
   Attachments:
     []
   DefaultScriptInputs:
-    -
-      {}
+    - scoreText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      livesText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      gameOverRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      startingLives: !<float> 3.000000
   ScriptTypes:
     -
       {}
   InputLines:
-    []
+    - // @input Component.Text scoreText
+    - // @input Component.Text livesText
+    - // @input SceneObject gameOverRoot
+    - // @input float startingLives = 3

@@ -33,6 +33,16 @@
   RotationAngle: 0
   Pivot: {x: 0.000000, y: 0.000000}
   ExtentsTarget: !<reference> 00000000-0000-0000-0000-000000000000
+- !<InteractionComponent/9cc4f5d7-1f1b-4a2b-87ea-1071d8f37258>
+  PrefabRemaps:
+    []
+  Name: Interaction
+  Enabled: true
+  Camera: !<reference> 00000000-0000-0000-0000-000000000000
+  MinimumTouchSize: 0.000000
+  DepthFilter: true
+  MeshVisuals:
+    []
 - !<SceneObject/a0640e06-fa3f-4700-4082-448a4da6aca5>
   PrefabRemaps:
     []
@@ -50,6 +60,7 @@
     - !<own> f027af32-7c99-420d-7315-ef0e9a876fd4
     - !<own> 1ac4f80c-bbb7-4620-4542-d1b831eb4b91
     - !<own> f30e72e2-b6ed-4458-697b-16b43993d858
+    - !<own> 9cc4f5d7-1f1b-4a2b-87ea-1071d8f37258
 - !<ObjectPrefabAssetData/be3e2c33-c709-4afe-9753-226c434bcce6>
   Prototype: !<ObjectOwner/8506e425-0dc6-45c4-b5b8-feb2a3013b12>
     PackagePath: ""
@@ -105,6 +116,7 @@
       speed: 0.300000
       topBoundaryY: 2.300000
       debugLogging: false
+      interactionComponent: !<reference.InteractionComponent> 9cc4f5d7-1f1b-4a2b-87ea-1071d8f37258
   ScriptTypes:
     "":
       {}

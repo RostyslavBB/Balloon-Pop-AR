@@ -1,10 +1,11 @@
-import {GameManager} from "./GameManager";
+import { GameManager } from "./GameManager";
 
 @component
-export class Balloon extends BaseScriptComponent {
-    @input 
+export class Balloon extends BaseScriptComponent
+{
+    @input
     speed: number = 0.3;
-    
+
     @input
     topBoundaryY: number = 1.1;
 
@@ -12,14 +13,16 @@ export class Balloon extends BaseScriptComponent {
     debugLogging: boolean = false;
 
     @input
-    interactionComponent: InteractionComponent | null = null;
+    @allowUndefined
+    interactionComponent: InteractionComponent;
 
-    private screenTransform!: ScreenTransform;
+    private screenTransform: ScreenTransform;
     private popped: boolean = false;
 
     onAwake()
     {
-        this.screenTransform = this.getSceneObject().getComponent("Component.ScreenTransform");
+        this.screenTransform = this.getSceneObject()
+            .getComponent("Component.ScreenTransform");
 
         this.createEvent("UpdateEvent").bind(() => this.onUpdate());
 
@@ -28,42 +31,45 @@ export class Balloon extends BaseScriptComponent {
 
     onUpdate()
     {
-        if(this.popped) return;
+        if (this.popped || !this.screenTransform) return;
 
         const step = this.speed * getDeltaTime();
         const anchors = this.screenTransform.anchors;
 
+        // Move both edges by the same amount: translate, never resize.
         anchors.top += step;
         anchors.bottom += step;
 
         this.screenTransform.anchors = anchors;
 
-        if(this.debugLogging)
+        if (this.debugLogging)
         {
-            print("Ballon Y: " + anchors.bottom);
+            print("Balloon Y: " + anchors.bottom);
         }
 
-        if(anchors.bottom >= this.topBoundaryY)
+        if (anchors.bottom >= this.topBoundaryY)
         {
-            this.missedBallon();
+            this.missedBalloon();
         }
     }
 
-    missedBallon()
+    missedBalloon()
     {
+        if (this.popped) return;
+
         this.popped = true;
         this.getSceneObject().enabled = false;
-        
+
         GameManager.getInstance()?.loseLife();
     }
 
     pop()
     {
-        if(this.popped) return;
-        
+        if (this.popped) return;
+
         this.popped = true;
         this.getSceneObject().enabled = false;
-        
+
         GameManager.getInstance()?.addScore(10);
     }
 

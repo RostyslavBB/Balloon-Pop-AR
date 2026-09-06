@@ -1,13 +1,16 @@
 import { Balloon } from "./Balloon";
+import { GameManager } from "./GameManager";
 
 @component
-export class BalloonSpawner extends BaseScriptComponent 
+export class BalloonSpawner extends BaseScriptComponent
 {
     @input
-    balloonPrefab: ObjectPrefab | null = null;
+    @allowUndefined
+    balloonPrefab: ObjectPrefab;
 
     @input
-    spawnRoot: SceneObject | null = null;
+    @allowUndefined
+    spawnRoot: SceneObject;
 
     @input
     poolSize: number = 10;
@@ -19,21 +22,30 @@ export class BalloonSpawner extends BaseScriptComponent
     spawnXRange: number = 1;
 
     private pool: SceneObject[] = [];
+    private spawnEvent: DelayedCallbackEvent;
 
-    onAwake() 
+    onAwake()
     {
+        if (!this.balloonPrefab || !this.spawnRoot)
+        {
+            print("BalloonSpawner: balloonPrefab or spawnRoot is not assigned");
+            return;
+        }
+
         for (let i = 0; i < this.poolSize; i++)
         {
-            const balloon = this.balloonPrefab?.instantiate(this.spawnRoot!);
-            
-            if (balloon)
-            {
-                balloon.enabled = false;
-                this.pool.push(balloon);
-            }
+            const balloon = this.balloonPrefab.instantiate(this.spawnRoot);
+            balloon.enabled = false;
+            this.pool.push(balloon);
         }
-        
-        this.schedulateNextSpawn();
+
+        // One reusable event instead of a new one per spawn.
+        this.spawnEvent = this.createEvent("DelayedCallbackEvent");
+        this.spawnEvent.bind(() => {
+            this.spawnBalloon();
+            this.spawnEvent.reset(this.spawnIntervalSeconds);
+        });
+        this.spawnEvent.reset(this.spawnIntervalSeconds);
     }
 
     private getFromPool(): SceneObject | null
@@ -46,38 +58,34 @@ export class BalloonSpawner extends BaseScriptComponent
         return null;
     }
 
-    schedulateNextSpawn()
-    {
-        const event = this.createEvent("DelayedCallbackEvent");
-        event.bind(() => {
-            this.spawnBalloon();
-            this.schedulateNextSpawn();
-        });
-
-        event.reset(this.spawnIntervalSeconds);
-    }
-
     spawnBalloon()
     {
+        if (GameManager.getInstance()?.isGameOver()) return;
+
         const balloon = this.getFromPool();
+        if (!balloon) return;
 
-        if(!balloon) return;
+        const screenTransform = balloon.getComponent("Component.ScreenTransform");
+        if (!screenTransform) return;
 
-        const balloonComponent = balloon.getComponent(Balloon.getTypeName()) as Balloon | null;
-        balloonComponent!.resetBalloon();
+        const anchors = screenTransform.anchors;
 
-        const screenTransform = balloon.getComponent("Component.ScreenTransform") as ScreenTransform | null;
-        const randomX = (Math.random() * 2 - 1) * this.spawnXRange;
-        const halfWidth = 0.1;   
-        const halfHeight = 0.12;
-        const anchors = screenTransform!.anchors;
+        // Keep whatever size the prefab was authored with.
+        const halfW = (anchors.right - anchors.left) / 2;
+        const halfH = (anchors.top - anchors.bottom) / 2;
 
-        anchors.left = randomX - halfWidth;
-        anchors.right = randomX + halfWidth;
-        anchors.top = -1.1 + halfHeight;
-        anchors.bottom = -1.1 - halfHeight;
+        // Keep the whole balloon inside the screen, not just its centre.
+        const limit = Math.max(0, this.spawnXRange - halfW);
+        const randomX = (Math.random() * 2 - 1) * limit;
 
-        screenTransform!.anchors = anchors;
+        anchors.left = randomX - halfW;
+        anchors.right = randomX + halfW;
+        anchors.bottom = -1.1 - halfH;
+        anchors.top = -1.1 + halfH;
+
+        screenTransform.anchors = anchors;
+
+        balloon.getComponent(Balloon.getTypeName())?.resetBalloon();
 
         balloon.enabled = true;
     }
