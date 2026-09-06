@@ -1,0 +1,52 @@
+- !<AssetImportMetadata/49677172-6c7e-4e86-aca3-bca3760bd8bd>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 1fd4e3f2-7f05-4748-b73b-cbb9c35042f9
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 1fd4e3f2-7f05-4748-b73b-cbb9c35042f9
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> c97a540a-d671-4d40-88a2-6d30b16a71d6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/c97a540a-d671-4d40-88a2-6d30b16a71d6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 5e96dbaa-7dcd-4129-8aeb-0f22067d0ee0
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    debugLogging: false
+    speed: false
+    topBoundaryY: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - speed: 0.300000
+      topBoundaryY: 1.100000
+      debugLogging: false
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input float speed = 0.3
+    - // @input float topBoundaryY = 1.1
+    - // @input bool debugLogging
